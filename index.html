@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Name Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="top-section">
+      <div class="author"><a class="fb-link" href="https://www.facebook.com/kothaunaing">Author: Than Aung Naing </a></div>
+      <div class="title">Myanmar Random Names Generator</div>
+      <div class="generate-section">
+        <input type="text" class="number-people" placeholder="Number of people" minlength="1" maxlength="3">
+
+        <select class="name-length">
+          <option class="option" value="1">1</option>
+          <option class="option" value="2">2</option>
+          <option class="option" value="3" selected>3</option>
+          <option class="option" value="4">4</option>
+        </select>
+
+        <select class="select-gender">
+          <option class="option" value="boy" selected>Boy</option>
+          <option class="option" value="girl">Girl</option>
+        </select>
+        <button class="generate-btn" onclick="
+      generateToggled();
+      ">Generate</button>
+      </div>
+
+      <div class="error-message">
+      </div>
+
+    </div>
+    <div class="bottom-section">
+      <div class="display-section">
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js">
+  </script>
+</body>
+
+</html>
