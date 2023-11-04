@@ -2,36 +2,42 @@ let numberPeople;
 let nameLength;
 let gender;
 
-let generatedNames = [];
+document.querySelector('.number-people').value = localStorage.getItem('number-people');
+
+let generatedNames = JSON.parse(localStorage.getItem('generated-names')) || [];
 let fullName = '';
 
+if (generatedNames.length !== 0) {
+  display();
+}
+
 const boyName = [
-  "Kyaw", "Aung", "Htet", "Min",
-  "Hla", "Win", "Myo", "Ko",
-  "Soe", "Naing", "Tun", "Thura",
-  "Lwin", "Moe", "Maung", "Ye",
-  "Thu", "Phyo", "Thant", "Wai",
-  "Hein", "Nay", "Saw", "Htet",
-  "Zin", "Myint", "Oo", "Khant",
-  "Zaw", "Thet", "Sai", "Soe",
-  "Han", "San", "Thaw", "Myat",
-  "Kaung", "Sithu", "Yan", "Htoo",
-  "Sone", "Pyae", "Lin", "Paing"
-  , "Htay", "Than"
+  "ကျော်", "အောင်", "ထက်", "မင်း",
+  "လှ", "ဝင်း", "မျိုး", "ကို",
+  "စိုး", "နိုင်", "ထွန်း", "သူရ",
+  "လွင်", "မိုး", "မောင်", "ရဲ",
+  "သူ", "ဖြိုး", "သန့်", "ဝေ",
+  "ဟိန်း", "နေ", "စော", "ထက်",
+  "ဇင်", "မြင့်", "ဦး", "ခန့်",
+  "ဇော်", "သက်", "စိုင်း",
+  "ဟန်", "သော်", "မြတ်",
+  "ကောင်း", "စည်သူ", "ရန်", "ထူး",
+  "စုံ", "ပြည့်", "လင်း", "ပိုင်"
+  , "သန်း"
 ];
 
 const girlName = [
-  "Aye", "Khin", "Thazin", "Hnin",
-  "Su", "Nwe", "Thiri", "May",
-  "Ei", "Myat", "Phyu", "Yin",
-  "Mya", "Chaw", "Pwint", "Zin",
-  "Zaw", "Shwe", "Wai", "Moe",
-  "Hsu", "Hsu", "Wint", "Sandar",
-  "Hlaing", "Yu", "Yoon", "Thwe",
-  "Htay", "Bhone", "Hnin", "Khaing",
-  "Pyae", "Thae", "Mon", "Nyein",
-  "Chan", "Phoo", "Yati", "Oo"
-  , "Wati", "Kyi", "Yu", "Saung"
+  "အေး", "ခင်", "သဇင်", "နှင်း",
+  "ဆု", "နွယ်", "သီရိ", "မေ",
+  "အိ", "မြတ်", "ဖြူ", "ယဉ်",
+  "မြ", "ချော", "ပွင့်", "ဇင်",
+  "ဇော်", "ရွှေ", "ဝေ", "မိုး",
+  "စု", "ဝင့်", "စန္ဒာ",
+  "လှိုင်", "ယု", "ယွန်း", "သွယ်",
+  "ဘုန်း", "ခိုင်",
+  "ပြည့်", "သဲ", "မွန်", "ငြိမ်း",
+  "ချမ်း", "ဖူး", "ရတီ", "ဦး"
+  , "ဝတီ", "ကြည်", "ဆောင်း"
 ];
 
 
@@ -39,10 +45,12 @@ function generateToggled() {
   const inputElement = document.querySelector('.number-people');
   emptyErrorMessage();
   getUserInput();
+  generatedNames = [];
   generateNames();
 
   emptyDisplay();
   display();
+  saveToLocalStorage();
   generatedNames = [];
 }
 
@@ -50,14 +58,20 @@ function getUserInput() {
   const inputElement = document.querySelector('.number-people');
   const numberPeopleValue = Number(inputElement.value);
 
-  if (numberPeopleValue){
-    numberPeople = numberPeopleValue;
+  console.log(numberPeopleValue);
+
+  if (isNaN(numberPeopleValue)) {
+    errorMessage();
+  }
+
+  else if (numberPeopleValue === 0) {
+    numberPeople = 1;
+    inputElement.value = '1';
   }
   else {
-    errorMessage();
-    numberPeople = 0;
+    numberPeople = numberPeopleValue;
   }
-  
+
   const lengthElement = document.querySelector('.name-length');
   const selectedLength = lengthElement[lengthElement.selectedIndex];
   nameLength = Number(selectedLength.value);
@@ -84,34 +98,39 @@ function generateNames() {
 
     for (let i = 0; i < nameLength; i++) {
       index = Math.floor(Math.random() * nameArrayLength);
-      fullName += nameArray[index] + ' ';
+      fullName += nameArray[index];
     }
 
-    generatedNames[j] = fullName;
+    generatedNames.push(fullName);
     fullName = '';
   }
-
-  console.log(generatedNames);
 }
 
-function display(){
+function display() {
   let displayElement = document.querySelector('.display-section');
   let display = '';
 
-  for (let i = 0; i < generatedNames.length; i++){
+  for (let i = 0; i < generatedNames.length; i++) {
     let nameContainer = `
     <div class="name-container">
-        <div class="number">${i+1}</div>
+        <div class="number">${i + 1}</div>
         <div class="name">${generatedNames[i]}</div>
       </div>
     `;
     display += nameContainer;
   }
-  displayElement.innerHTML = display;
-  console.log(display);
+  displayElement.innerHTML = `
+  <div class="clear-button-container">
+    <button class="clear-button" onclick="
+    clearDisplay();
+    ">Clear</button>
+    <div class="tooltip">Clear</div>
+  </div>
+  ${display}
+  `;
 }
 
-function errorMessage(){
+function errorMessage() {
   const errorElement = document.querySelector('.error-message');
   errorElement.innerHTML = `
   <img class="error-icon" src="images/icons8_error.svg">
@@ -119,12 +138,33 @@ function errorMessage(){
   `;
 }
 
-function emptyErrorMessage(){
+function emptyErrorMessage() {
   const errorElement = document.querySelector('.error-message');
   errorElement.innerHTML = '';
 }
 
-function emptyDisplay(){
+function emptyDisplay() {
   const displayElement = document.querySelector('.display-section');
   displayElement.innerHTML = '';
+}
+
+function saveToLocalStorage() {
+  const numberPeopleElement = document.querySelector('.number-people');
+  const numberPeople = numberPeopleElement.value;
+
+  const generatedNamesString = JSON.stringify(generatedNames);
+  localStorage.setItem('number-people', numberPeople);
+  localStorage.setItem('generated-names', generatedNamesString);
+}
+
+function clearDisplay() {
+  const displayElement = document.querySelector('.display-section');
+  displayElement.innerHTML = `
+  <p class="start-display">Generated names will be shown here.</p>
+  `;
+  document.querySelector('.number-people').value = '';
+
+  localStorage.removeItem('number-people');
+  localStorage.removeItem('generated-names');
+  localStorage.removeItem('gender');
 }
