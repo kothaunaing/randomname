@@ -102,7 +102,7 @@ body {
   background-color: rgb(223, 17, 17);
   border: none;
   box-shadow: 0 0 5px rgba(53, 53, 53, 0.616);
-  outline-color: rgb(6, 202, 6);;
+  outline-color: rgb(6, 202, 6);
   cursor: pointer;
   font-weight: 600;
   transition: opacity 0.15s;
