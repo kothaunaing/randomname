@@ -1,6 +1,7 @@
 body {
   font-family: system-ui;
   padding: 20px;
+  font-size: 1em;
 }
 
 
@@ -77,6 +78,7 @@ body {
   padding-left: 10px;
   outline-color: rgb(6, 202, 6);
   min-width: 100px;
+  font-size: 1em;
 }
 
 .select-gender {
@@ -92,6 +94,7 @@ body {
   font-weight: 600;
   transition: opacity 0.15s;
   border-radius: 0;
+  font-size: 1em;
 }
 
 .name-length {
@@ -107,6 +110,7 @@ body {
   font-weight: 600;
   transition: opacity 0.15s;
   border-radius: 0;
+  font-size: 1em;
 }
 
 .name-length-container,
@@ -159,6 +163,7 @@ body {
   font-weight: 600;
   transition: opacity 0.15s;
   border-radius: 0;
+  font-size: 1em;
 }
 
 .display-section {
