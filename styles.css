@@ -1,7 +1,6 @@
 body {
   font-family: system-ui;
   padding: 20px;
-  font-size: 1em;
 }
 
 
@@ -160,7 +159,6 @@ body {
   font-weight: 600;
   transition: opacity 0.15s;
   border-radius: 0;
-  font-size: 1em;
 }
 
 .display-section {
