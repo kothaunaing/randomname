@@ -96,7 +96,7 @@ body {
 .select-gender {
   text-align: center;
   height: 44px;
-  width: 60px;
+  width: auto;
   color: white;
   background-color: rgb(223, 17, 17);
   border: none;
