@@ -43,22 +43,25 @@ const girlName = [
 
 function generateToggled() {
   const inputElement = document.querySelector('.number-people');
+  const displayElement = document.querySelector('.display-section');
   emptyErrorMessage();
   getUserInput();
   generatedNames = [];
   generateNames();
 
   emptyDisplay();
-  display();
-  saveToLocalStorage();
-  generatedNames = [];
+
+  setTimeout(function(){
+    display();
+    saveToLocalStorage();
+    generatedNames = [];
+  }, 1000);
+  displayElement.innerHTML = `<p class="start-display">Generating . . .</p>`;
 }
 
 function getUserInput() {
   const inputElement = document.querySelector('.number-people');
   const numberPeopleValue = Number(inputElement.value);
-
-  console.log(numberPeopleValue);
 
   if (isNaN(numberPeopleValue)) {
     errorMessage();
@@ -112,9 +115,10 @@ function display() {
 
   for (let i = 0; i < generatedNames.length; i++) {
     let nameContainer = `
-    <div class="name-container">
+      <div class="name-container">
         <div class="number">${i + 1}</div>
         <div class="name">${generatedNames[i]}</div>
+       <!-- <img class="copy-icon" src="images/icons8_copy.svg"> -->
       </div>
     `;
     display += nameContainer;
@@ -123,8 +127,8 @@ function display() {
   <div class="clear-button-container">
     <button class="clear-button" onclick="
     clearDisplay();
-    ">Clear</button>
-    <div class="tooltip">Clear</div>
+    ">Clear All</button>
+    <div class="tooltip">Clear all names</div>
   </div>
   ${display}
   `;
@@ -167,4 +171,16 @@ function clearDisplay() {
   localStorage.removeItem('number-people');
   localStorage.removeItem('generated-names');
   localStorage.removeItem('gender');
+}
+
+/*function coyName(){
+  const nameBox = document.querySelector('.name');
+  nameBox.select();
+ // document.execCommand("copy");
+}*/
+
+function generatorWithEnter(event){
+  if (event.key === 'Enter'){
+    generateToggled();
+  }
 }

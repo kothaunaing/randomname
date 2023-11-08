@@ -1,8 +1,14 @@
+@font-face {
+  font-family: Padauk;
+  src: url(fonts/Padauk-Bold.ttf);
+}
+
 body {
   font-family: system-ui;
   padding: 20px;
+  font-size: 1em;
+  background: rgba(196, 196, 196, 0.699);
 }
-
 
 .top-section {
   margin-left: auto;
@@ -16,16 +22,18 @@ body {
   background-color: rgba(255, 3, 3, 0.034);
   max-width: 600px;
   border-radius: 10px;
-  border-bottom: none;
+  border-bottom: 1px solid rgb(196, 196, 196);
   position: relative;
+  background-color: rgb(240, 240, 240);
 }
 
 .author {
   position: absolute;
   top: 10px;
   left: 10px;
-  font-size: 0.8em;
+  font-size: 1em;
   font-weight: 600;
+  font-family: Padauk;
 }
 
 .fb-link:link {
@@ -53,7 +61,10 @@ body {
   border: 1px solid rgb(209, 209, 209);
   margin-bottom: 10px;
   max-width: 600px;
-  background-color: rgba(47, 255, 110, 0.027);
+  background-color: rgb(240, 240, 240);
+  z-index: 10;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .title {
@@ -72,16 +83,19 @@ body {
 }
 
 .number-people {
-  height: 35px;
+  height: 40px;
   border: 1px solid rgb(192, 192, 192);
   padding-left: 10px;
   outline-color: rgb(6, 202, 6);
-  min-width: 100px;
+  min-width: 80px;
+  font-size: 1em;
+  font-family: Padauk;
+  border-radius: 5px;
 }
 
 .select-gender {
   text-align: center;
-  height: 39px;
+  height: 44px;
   width: 60px;
   color: white;
   background-color: rgb(223, 17, 17);
@@ -91,12 +105,16 @@ body {
   cursor: pointer;
   font-weight: 600;
   transition: opacity 0.15s;
-  border-radius: 0;
+  border-radius: none;
+  font-size: 1em;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 5px;
+  font-family: Padauk;
 }
 
 .name-length {
   text-align: center;
-  height: 39px;
+  height: 44px;
   width: 50px;
   color: white;
   background-color: rgb(223, 17, 17);
@@ -106,7 +124,10 @@ body {
   cursor: pointer;
   font-weight: 600;
   transition: opacity 0.15s;
-  border-radius: 0;
+  border-radius: none;
+  font-size: 1em;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 5px;
 }
 
 .name-length-container,
@@ -140,17 +161,18 @@ body {
   opacity: 1;
 }
 
-
 .select-gender:hover,
 .name-length:hover,
 .generate-btn:hover,
 .clear-button:hover {
-  opacity: 0.8;
+  opacity: 0.7;
+  border: 1px solid rgb(78, 78, 78);
 }
 
 .generate-btn,
 .clear-button {
-  padding: 12px 5px;
+  height: 44px;
+  padding: 0 5px;
   color: white;
   background-color: rgb(223, 17, 17);
   border: none;
@@ -158,11 +180,18 @@ body {
   cursor: pointer;
   font-weight: 600;
   transition: opacity 0.15s;
-  border-radius: 0;
+  border-radius: none;
+  font-size: 1em;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 5px;
+  font-family: Padauk;
 }
 
 .display-section {
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 0px;
+  max-width: 400px;
 }
 
 .clear-button-container {
@@ -172,13 +201,14 @@ body {
 }
 
 .clear-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: none;
+  height: 35px;
+  padding: 0 20px;
+  border-radius: 20px;
 }
 
 .name-container {
   border: none;
+  border-radius: 5px;
   display: flex;
   justify-content: start;
   align-items: center;
@@ -187,27 +217,44 @@ body {
   margin-bottom: 5px;
   background-color: rgba(255, 63, 95, 0.158);
   box-shadow: 0 0 5px rgba(36, 36, 36, 0.082);
+  border: 1px solid rgba(207, 207, 207, 0);
+  position: relative;
+  font-family: Padauk;
+}
+
+.name-container:hover {
+  opacity: 0.8;
+  border: 1px solid rgb(194, 194, 194);
 }
 
 .number {
   font-weight: 600;
   color: rgb(7, 25, 184);
 }
+
 .name {
   color: black;
   font-weight: 550;
 }
+
+.copy-icon {
+  height: 25px;
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
 .start-display {
   font-size: 1.1em;
   font-weight: 600;
   text-align: center;
 }
 
-@media(max-width: 450px){
+@media(max-width: 450px) {
 
-body {
-  padding: 10px;
-}
+  body {
+    padding: 10px;
+  }
 
   .top-section {
     max-width: 300px;
@@ -223,4 +270,3 @@ body {
     column-gap: 5px;
   }
 }
-

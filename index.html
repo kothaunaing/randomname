@@ -13,11 +13,13 @@
   <div class="container">
     <div class="top-section">
       <div class="author">
-        <a class="fb-link" href="https://www.facebook.com/kothaunaing">Author: Than Aung Naing </a>
+        <a class="fb-link" href="https://www.facebook.com/kothaunaing" title="Author's facebook">Author: Than Aung Naing </a>
       </div>
       <div class="title">Myanmar Random Names Generator</div>
       <div class="generate-section">
-        <input type="text" class="number-people" placeholder="Number of names" minlength="1" maxlength="3">
+        <input type="text" class="number-people" placeholder="Number of names" minlength="1" maxlength="3" onkeydown="
+          generatorWithEnter(event);
+          ">
 
         <div class="name-length-container">
           <select class="name-length">
