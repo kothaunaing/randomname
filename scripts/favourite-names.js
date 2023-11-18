@@ -1,3 +1,5 @@
+import {displayHTML} from './main.js';
+
 export let favouriteNames = JSON.parse(localStorage.getItem('favourite-names')) || [];
 
 export function addToFavourites() {
@@ -88,6 +90,7 @@ export function removeFavouriteNames() {
         removeNames(favedName);
         saveToStorage();
         favouriteNamesHTML();
+        displayHTML();
       });
     });
 }

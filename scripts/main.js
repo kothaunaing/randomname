@@ -87,7 +87,7 @@ function generateNames() {
   }
 }
 
-function displayHTML() {
+export function displayHTML() {
   const displayElement = document.querySelector('.display-section');
   let html = '';
 

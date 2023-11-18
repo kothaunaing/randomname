@@ -325,6 +325,21 @@ body {
   }
 }
 
+@media(max-width: 400px){
+  .copy-btn {
+    right: 0px;
+  }
+  
+  .add-to-fav-btn {
+    right: 30px;
+  }
+
+  .sidebar {
+    background-color: rgb(214, 214, 214);
+    border-right: 2px solid rgb(141, 141, 141);
+  }
+}
+
 .sidebar-active {
   display: block;
   left: 0;
