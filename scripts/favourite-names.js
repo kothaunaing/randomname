@@ -1,5 +1,3 @@
-import {displayHTML} from '../scripts/main.js';
-
 export let favouriteNames = JSON.parse(localStorage.getItem('favourite-names')) || [];
 
 export function addToFavourites() {
@@ -79,20 +77,17 @@ export function favouriteNamesHTML() {
 
   document.querySelector('.fav-names')
     .innerHTML = html;
-  removeFavouriteNames();
+    removeFavouriteNames();
 }
 
-function removeFavouriteNames() {
+export function removeFavouriteNames() {
   document.querySelectorAll('.faved-btn')
     .forEach((buttonElement) => {
       buttonElement.addEventListener('click', () => {
         const { favedName } = buttonElement.dataset;
-        const nameElement = document.querySelector(`.fav-name-${favedName}`);
         removeNames(favedName);
         saveToStorage();
         favouriteNamesHTML();
-        displayHTML();
-        ;
       });
     });
 }
