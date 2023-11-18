@@ -1,67 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Name Generator</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Random Name Generator</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
+  <body>
+    <div class="container">
+      <div class="top-section">
+        <div class="menu">
+          <img class="menu-bar" src="images/icons8_menu_480px.png" />
+        </div>
+        <div class="name-language">
+          <div>Name Language </div>
+          <div>
+            <select class="name-language-selector">
+              <option selected value="my">Myanmar</option>
+              <option value="en">English</option>
+            </select>
+          </div>
+        </div>
+        <div class="title">Myanmar Random Names Generator</div>
+        <div class="generate-section">
+          <input
+            type="text"
+            class="number-people"
+            placeholder="Number of names"
+            minlength="1"
+            maxlength="3"
+          />
 
-<body>
+          <div class="name-length-container">
+            <select class="name-length">
+              <option class="option" value="1">1</option>
+              <option class="option" value="2">2</option>
+              <option class="option" value="3" selected>3</option>
+              <option class="option" value="4">4</option>
+            </select>
+            <div class="tooltip">Names Length</div>
+          </div>
 
-  <div class="container">
-    <div class="top-section">
-      <div class="author">
-        <a class="fb-link" href="https://www.facebook.com/kothaunaing" title="Author's facebook">Author: Than Aung Naing </a>
-      </div>
-      <div class="title">Myanmar Random Names Generator</div>
-      <div class="generate-section">
-        <input type="text" class="number-people" placeholder="Number of names" minlength="1" maxlength="3" onkeydown="
-          generatorWithEnter(event);
-          ">
+          <div class="select-gender-container">
+            <select class="select-gender">
+              <option class="option" value="boy" selected>Boy</option>
+              <option class="option" value="girl">Girl</option>
+            </select>
+            <div class="tooltip">Gender</div>
+          </div>
 
-        <div class="name-length-container">
-          <select class="name-length">
-            <option class="option" value="1">1</option>
-            <option class="option" value="2">2</option>
-            <option class="option" value="3" selected>3</option>
-            <option class="option" value="4">4</option>
-          </select>
-          <div class="tooltip">Names Length</div>
+          <div class="generate-btn-container">
+            <button class="generate-btn">Generate</button>
+            <div class="tooltip">Generate Names</div>
+          </div>
         </div>
 
-        <div class="select-gender-container">
-          <select class="select-gender">
-            <option class="option" value="boy" selected>Boy</option>
-            <option class="option" value="girl">Girl</option>
-          </select>
-          <div class="tooltip">Gender</div>
-        </div>
-
-        <div class="generate-btn-container">
-          <button class="generate-btn" onclick="
-        generateToggled();
-        ">Generate</button>
-          <div class="tooltip">Generate Names</div>
-        </div>
-
+        <div class="error-message"></div>
       </div>
-
-      <div class="error-message">
+      <div class="bottom-section">
+        <div class="display-section">
+          <p class="start-display">Generated names will be shown here.</p>
+        </div>
       </div>
-
     </div>
-    <div class="bottom-section">
-      <div class="display-section">
-        <p class="start-display">Generated names will be shown here.</p>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="close-menu-bar-container">
+        <img class="close-menu-bar" src="images/icons8_delete_500px.png" />
+      </div>
+      <div class="all-container">
+        <div class="favourite-names-container">
+          <div class="sidebar-title">Favourite Names</div>
+          <div class="fav-names"></div>
+        </div>
+
+        <div class="other-programs-container">
+          <div class="sidebar-title">Other Programs</div>
+          <div class="other-programs">
+            <a href="https://kothaunaing.github.io/peoplepicker"
+              ><div class="program">People Picker</div></a
+            >
+            <a href="https://kothaunaing.github.io/meterbill"
+              ><div class="program">Meter Bill Calculator</div></a
+            >
+            <a href="https://kothaunaing.github.io/dictionary"
+              ><div class="program">Dictionary</div></a
+            >
+            <a href="https://kothaunaing.github.io/game"
+              ><div class="program">Rock Paper Scissor</div></a
+            >
+          </div>
+        </div>
+
+        <div class="about-author">
+          <div class="author">Than Aung Naing</div>
+          <a href="https://www.facebook.com/kothaunaing"
+            ><img class="facebook-icon" src="images/icons8_facebook_144px.png"
+          /></a>
+        </div>
       </div>
     </div>
-  </div>
-  </div>
 
-  <script src="script.js">
-  </script>
-</body>
-
+    <script type="module" src="/scripts/main.js"></script>
+  </body>
 </html>
