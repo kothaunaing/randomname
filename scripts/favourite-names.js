@@ -77,7 +77,7 @@ export function favouriteNamesHTML() {
 
   document.querySelector('.fav-names')
     .innerHTML = html;
-    removeFavouriteNames();
+  removeFavouriteNames();
 }
 
 export function removeFavouriteNames() {
