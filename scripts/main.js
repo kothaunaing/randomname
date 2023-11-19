@@ -1,8 +1,13 @@
 import { boyNameMy, girlNameMy, boyNameEn, girlNameEn } from '../data/names.js';
 import { addToFavourites, favouriteNamesHTML, favouriteNames } from './favourite-names.js';
+import {otherProgramsHTML} from '../data/other-programs.js';
+import { greetUser, updateTimeIcon } from './greeting.js';
+
+
+export const today = dayjs();
 
 let generatedNames = JSON.parse(localStorage.getItem('generated-names')) || [];
-
+let greeting = greetUser();
 let language;
 let numberPeople;
 let nameLength;
@@ -13,21 +18,16 @@ if (generatedNames.length !== 0) {
 }
 
 favouriteNamesHTML();
+otherProgramsHTML();
+greetingMessage();
 
 let generateTimeOutId;
 function generateRandomNames() {
-  const displayElement = document.querySelector('.display-section');
   getUserInput();
   generateNames();
   saveToLocalStorage();
   clearTimeout(generateTimeOutId);
-  generateTimeOutId = setTimeout(function () {
-    displayHTML();
-  }, 2000);
-  displayElement.innerHTML = `
-  <div class="loading-icon-container">
-    <img class="loading-icon" src="images/loading 2.gif">
-  </div>`;
+  displayHTML();
 }
 
 function getUserInput() {
@@ -43,7 +43,6 @@ function getUserInput() {
 
   nameLength = Number(document.querySelector('.name-length').value);
   gender = document.querySelector('.select-gender').value;
-  console.log(language)
 }
 
 function generateNames() {
@@ -99,7 +98,7 @@ export function displayHTML() {
         <button class="copy-btn" 
         data-name="${name}">
           <img class="copy-icon" src="images/icons8_copy.svg">
-       </button>
+        </button>
           ${changeFavIcon(name)}
       </div>
     `;
@@ -118,18 +117,6 @@ export function displayHTML() {
   addToFavourites();
 }
 
-document.querySelector('.number-people')
-  .addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-      generateRandomNames();
-    }
-  });
-
-document.querySelector('.generate-btn')
-  .addEventListener('click', () => {
-    generateRandomNames();
-  });
-
 
 function saveToLocalStorage() {
   const generatedNamesString = JSON.stringify(generatedNames);
@@ -146,17 +133,67 @@ function clearDisplay() {
   displayElement.innerHTML = `
   <p class="start-display">Generated names will be shown here.</p>
   `;
-  removeFromStorage();
 }
 
 function clearAll() {
   document.querySelector('.clear-button')
     .addEventListener('click', () => {
+      showClearMessage();
+    });
+
+  document.querySelector('.yes-btn')
+    .addEventListener('click', () => {
       clearDisplay();
+      removeFromStorage();
+      hideClearMessage();
+    });
+
+    document.querySelector('.no-btn')
+    .addEventListener('click', () => {
+      hideClearMessage();
     });
 }
 
-function copyToClipboard() {
+function animateDisplaySection(){
+  document.querySelectorAll('.name-container')
+    .forEach(element => {
+      element.classList.add('name-container-animation');
+      setTimeout(() => {
+        element.classList.remove('name-container-animation');
+      }, 300);
+    })
+}
+
+function greetingMessage(){
+  document.querySelector('.greeting')
+    .innerHTML = `Good ${greeting} . . .`;
+  document.querySelector('.time-icon-container')
+    .innerHTML = `
+    <img class="time-icon" src="images/${updateTimeIcon()}-icon.png">
+    `;
+}
+
+function showSidbar() {
+  document.querySelector('.sidebar')
+    .classList.add('sidebar-active');
+}
+
+function hideSidebar() {
+  document.querySelector('.sidebar')
+    .classList.remove('sidebar-active');
+}
+
+function showClearMessage(){
+  document.querySelector('.message-container')
+  .classList.add('message-container-active');
+}
+
+function hideClearMessage(){
+  document.querySelector('.message-container')
+  .classList.remove('message-container-active');
+}
+
+export function copyToClipboard() {
   document.querySelectorAll('.copy-btn').forEach((copyElement, index) => {
     copyElement.addEventListener('click', () => {
       const { name } = copyElement.dataset;
@@ -201,26 +238,21 @@ document.querySelector('.menu')
     showSidbar();
   });
 
-
-/*document.querySelector('.bottom-section')
-  .addEventListener('click', () => {
-    hideSidebar();
-  });
-  */
-
 document.querySelector('.close-menu-bar')
   .addEventListener('click', () => {
     hideSidebar();
   });
 
-function showSidbar() {
-  document.querySelector('.sidebar')
-    .classList.add('sidebar-active');
-}
+  document.querySelector('.number-people')
+  .addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      generateRandomNames();
+      animateDisplaySection();
+    }
+  });
 
-function hideSidebar() {
-  document.querySelector('.sidebar')
-    .classList.remove('sidebar-active');
-}
-
-
+document.querySelector('.generate-btn')
+  .addEventListener('click', () => {
+    generateRandomNames();
+    animateDisplaySection();
+  });

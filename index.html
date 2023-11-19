@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Random Name Generator</title>
+    <link rel="stylesheet" href="styles/sidebar.css" />
     <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/clear-message.css" />
   </head>
 
   <body>
@@ -14,7 +16,7 @@
           <img class="menu-bar" src="images/icons8_menu_480px.png" />
         </div>
         <div class="name-language">
-          <div>Name Language </div>
+          <div>Name Language</div>
           <div>
             <select class="name-language-selector">
               <option selected value="my">Myanmar</option>
@@ -55,8 +57,6 @@
             <div class="tooltip">Generate Names</div>
           </div>
         </div>
-
-        <div class="error-message"></div>
       </div>
       <div class="bottom-section">
         <div class="display-section">
@@ -72,37 +72,43 @@
       </div>
       <div class="all-container">
         <div class="favourite-names-container">
-          <div class="sidebar-title">Favourite Names</div>
+          <div class="sidebar-title">Favourite Names (<span class="faved-names-count">0</span>)</div>
           <div class="fav-names"></div>
         </div>
 
         <div class="other-programs-container">
-          <div class="sidebar-title">Other Programs</div>
-          <div class="other-programs">
-            <a href="https://kothaunaing.github.io/peoplepicker"
-              ><div class="program">People Picker</div></a
-            >
-            <a href="https://kothaunaing.github.io/meterbill"
-              ><div class="program">Meter Bill Calculator</div></a
-            >
-            <a href="https://kothaunaing.github.io/dictionary"
-              ><div class="program">Dictionary</div></a
-            >
-            <a href="https://kothaunaing.github.io/game"
-              ><div class="program">Rock Paper Scissor</div></a
-            >
-          </div>
+          <div class="sidebar-title">Other Programs (<span class="other-programs-count">0</span>)</div>
+          <div class="other-programs"></div>
         </div>
 
         <div class="about-author">
           <div class="author">Than Aung Naing</div>
-          <a href="https://www.facebook.com/kothaunaing"
-            ><img class="facebook-icon" src="images/icons8_facebook_144px.png"
-          /></a>
+          <a href="https://www.facebook.com/kothaunaing">
+            <img class="facebook-icon" src="images/icons8_facebook_144px.png" />
+          </a>
+        </div>
+
+        <div class="greeting-message-container">
+          <div class="time-icon-container">
+          </div>
+          <div class="greeting"></div>
         </div>
       </div>
     </div>
 
+    <!-- Are you sure to clear all ? -->
+
+    <div class="message-container">
+      <div class="message">
+        <div>Are you sure to clear all?</div>
+        <div class="buttons-container">
+          <button class="yes-btn">Yes</button>
+          <button class="no-btn">No</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="package/dayjs.min.js"></script>
     <script type="module" src="scripts/main.js"></script>
   </body>
 </html>
