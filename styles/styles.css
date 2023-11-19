@@ -243,7 +243,7 @@ body {
   box-shadow: 0 0 5px rgba(14, 14, 14, 0.068);
   border: 1px solid rgba(207, 207, 207, 0);
   position: relative;
-  font-family: system-ui, Padauk;
+  font-family: Padauk;
 }
 
 .name-container-animation {
