@@ -87,7 +87,7 @@
 .fav-names,
 .other-programs {
   padding: 5px;
-  font-family: system-ui, Padauk;
+  font-family: Padauk;
   display: flex;
   flex-direction: column;
   row-gap: 5px;
