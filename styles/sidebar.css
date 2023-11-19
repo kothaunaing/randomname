@@ -91,10 +91,14 @@
   display: flex;
   flex-direction: column;
   row-gap: 5px;
-  max-height: 200px;
+  max-height: 150px;
   border-radius: 5px;
   overflow-y: auto;
   margin-bottom: 5px;
+}
+
+.other-programs {
+  max-height: 200px;
 }
 
 .faved-btn {
