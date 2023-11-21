@@ -12,7 +12,7 @@ export function greetUser() {
   else if (amPm == 'am' && (hour >= 5 && hour <= 11)) {
     time = 'morning';
   }
-  else if (amPm === 'pm' && (hour >= '12' && hour <= 4)) {
+  else if (amPm === 'pm' && (hour >= 12 && hour <= 4)) {
     time = 'afternoon';
   }
   else if (amPm === 'pm' && (hour >= 5 && hour <= 8)) {
