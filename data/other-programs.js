@@ -22,6 +22,10 @@ const programs = [
   {
     name: 'SEA Students',
     link: 'students'
+  },
+  {
+    name: 'English Level Test',
+    link: 'leveltest'
   }
 ];
 
